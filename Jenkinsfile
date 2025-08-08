@@ -7,7 +7,7 @@ triggers {
 stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/your-username/your-repo.git'
+                git branch: 'dev', url: 'https://github.com/your-username/your-repo.git'
             }
         }
 
@@ -31,7 +31,7 @@ stages {
                 sh """
                 mkdir -p $DEPLOY_PATH
                 cp -r * $DEPLOY_PATH/
-                echo 'Deployed at: ' $(date)
+                echo 'Deployed at: ' \$(date)
                 """
             }
         }
@@ -41,7 +41,7 @@ stages {
         success {
             echo '✅ Build and Deployment successful.'
         }
-failure {
+        failure {
             echo '❌ Build or Deployment failed.'
         }
     }
