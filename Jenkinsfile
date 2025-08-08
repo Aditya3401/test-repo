@@ -1,10 +1,10 @@
 pipeline {
     agent any
-triggers {
+    triggers {
         // Poll GitHub every 1 minute for changes
         pollSCM('* * * * *')
     }
-stages {
+    stages {
         stage('Checkout') {
             steps {
                 git branch: 'dev', url: 'https://github.com/your-username/your-repo.git'
@@ -22,16 +22,18 @@ stages {
         stage('Test') {
             steps {
                 echo 'Running tests...'
-                // Example test command}
+                // Example test command
+                // sh 'npm test'   <-- your actual test command here
+            }
         }
+
         stage('Deploy') {
             steps {
-                echo 'Deploying to $DEPLOY_PATH ...'
-                // Sample deployment (replace with your actual command)
+                echo "Deploying to $DEPLOY_PATH ..."
                 sh """
-                mkdir -p $DEPLOY_PATH
-                cp -r * $DEPLOY_PATH/
-                echo 'Deployed at: ' \$(date)
+                    mkdir -p $DEPLOY_PATH
+                    cp -r * $DEPLOY_PATH/
+                    echo 'Deployed at: ' \$(date)
                 """
             }
         }
