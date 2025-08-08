@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/Aditya3401/test-repo.git'
+                git url: 'https://github.com/im2g2s/DevopsAcademy.git', branch: 'main'
             }
         }
         stage('Build') {
