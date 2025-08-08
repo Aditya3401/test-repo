@@ -3,7 +3,7 @@ pipeline {
 
     triggers {
         // build is triggered when a push event is received from the GitHub webhook
-        gethubPush()
+        githubPush()
     }
 
     stages {
